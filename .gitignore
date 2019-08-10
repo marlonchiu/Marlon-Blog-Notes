@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+docs/.vuepress/dist
+
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
