@@ -2,7 +2,7 @@
 
 ## 访问地址
 
-[访问地址](https://marlonchiu.github.io/vuepress/)
+[访问地址](https://marlonchiu.github.io/)
 
 ## 参考
 
