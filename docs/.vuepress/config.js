@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/vuepress/',
+  base: '/',
   title: 'FE 前端成长笔记',
   description: '一个前端工程师的自我修养',
   serviceWorker: true,
