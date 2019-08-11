@@ -18,6 +18,7 @@ module.exports = {
       {text: '技术', link: '/technology/'},
       {text: '随笔', link: '/essay/'},
       {text: '思考', link: '/ponder/'},
+      {text: '其他', link: '/others/'},
       {text: '标签', link: '/tags/'},
       // { text: '关于', link: '/about/' },
       {
