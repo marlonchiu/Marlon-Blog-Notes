@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/vuepress/',
+  base: '/',
   title: 'FE 前端成长笔记',
   description: '一个前端工程师的自我修养',
   serviceWorker: true,
@@ -12,6 +12,7 @@ module.exports = {
   },
   themeConfig: {
     logo: "/img/logo.png",
+    date_format: 'yyyy-MM-dd HH:mm:ss',
     nav: [
       {text: '首页', link: '/timeLine/'},
       {text: '技术', link: '/technology/'},
@@ -31,6 +32,14 @@ module.exports = {
       }
     ],
     sidebar: 'auto',
+    // sidebar: {
+    //   '/timeLine': [
+    //     '/technology/',
+    //     '/essay/',
+    //     '/ponder/',
+    //     '/tags/',
+    //   ]
+    // },
     sidebarDepth: 2,
     lastUpdated: 'Last Updated'
   }

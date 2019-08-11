@@ -3,9 +3,12 @@
     <div class=" items ">
 
       <el-row>
-        <el-col :span="11" v-for=" (item, index) in data.items" :key="item.key" :offset=" index%2 == 1? 2: 0 ">
+        <el-col
+            :span="11"
+            v-for="(item, index) in data.items"
+            :key="item.key" :offset=" index % 2 == 1? 2: 0 ">
           <el-card class="box-card" shadow="always" :body-style="{ padding: '0px' }">
-            <div style=" cursor:pointer;" @click="gogogo(item.path)">
+            <div style="cursor:pointer;" @click="goDetail(item.path)">
               <div slot="header" class="cardHeader">
                 <div style=" padding: 10px ">
                   <span class="blogTitle">{{ item.title }}</span>
@@ -42,8 +45,8 @@
       <el-pagination
           background
           layout="prev, pager, next"
-          :page-size=" pageSize "
-          :total=" data.total "
+          :page-size="pageSize "
+          :total="data.total "
           @current-change="pageChange"
           @prev-click="prevPage"
           @next-click="nextPage">
@@ -53,7 +56,91 @@
   </div>
 </template>
 
-<style scope>
+<script>
+  export default {
+    data() {
+      return {
+        pageNum: 1,
+        pageSize: 10,
+        data: {
+          items: [],
+          total: 0
+        }
+      }
+    },
+    props: ['tag', 'type'],
+    created: function () {
+      this.show()
+    },
+    computed: {
+      pages() {
+        const pages = []
+
+        if (this.type) {
+          this.$site.pages.forEach(item => {
+
+            if (item.frontmatter.type == this.type) {
+              pages.push(item);
+            }
+          });
+
+          return pages;
+        }
+
+        if (this.tag) {
+          this.$site.pages.forEach(item => {
+            if (item.frontmatter.tags) {
+              let tags = item.frontmatter.tags.split("|");
+              if (tags.indexOf(this.tag) >= 0) {
+                pages.push(item);
+              }
+            }
+          });
+
+          return pages;
+        }
+
+        this.$site.pages.forEach(item => {
+
+          if (item.frontmatter.type) {
+            pages.push(item);
+          }
+        });
+
+        return pages;
+      },
+    },
+    methods: {
+      show() {
+        let startNum = this.pageSize * (this.pageNum - 1)
+        let endNum = this.pageSize * this.pageNum
+        this.data.items = this.pages.slice(startNum, endNum)
+        this.data.total = this.pages.length
+      },
+      goDetail(path) {
+        // console.log(path);
+        window.location.href = path
+      },
+      pageChange(thisPageNo) {
+        this.pageNum = thisPageNo
+        this.show()
+      },
+      nextPage(thisPageNo) {
+        this.pageChange(thisPageNo)
+      },
+      prevPage(thisPageNo) {
+        this.pageChange(thisPageNo)
+      }
+    },
+    watch: {
+      tag(tag) {
+        this.show()
+      }
+    }
+  }
+</script>
+
+<style scoped>
   .blogTitle {
     font-size: 18px;
     font-weight: bold
@@ -99,88 +186,4 @@
     padding: 10px;
     height: 20px;
   }
-
 </style>
-
-<script>
-  export default {
-    data() {
-      return {
-        pageSize: 10,
-        page: 1,
-        data: {
-          items: [],
-          total: 0
-        }
-      }
-    },
-    props: ['tag', 'type'],
-    created: function () {
-      this.show();
-    },
-    computed: {
-      pages() {
-        const pages = [];
-
-        if (this.type) {
-          this.$site.pages.forEach(item => {
-
-            if (item.frontmatter.type == this.type) {
-              pages.push(item);
-            }
-          });
-
-          return pages;
-        }
-
-        if (this.tag) {
-          this.$site.pages.forEach(item => {
-            if (item.frontmatter.tags) {
-              let tags = item.frontmatter.tags.split("|");
-              if (tags.indexOf(this.tag) >= 0) {
-                pages.push(item);
-              }
-            }
-          });
-
-          return pages;
-        }
-
-        this.$site.pages.forEach(item => {
-
-          if (item.frontmatter.type) {
-            pages.push(item);
-          }
-        });
-
-        return pages;
-      },
-    },
-    methods: {
-      show() {
-        let startNo = this.pageSize * (this.page - 1);
-        let endNo = this.pageSize * this.page;
-        this.data.items = this.pages.slice(startNo, endNo);
-        this.data.total = this.pages.length;
-      },
-      gogogo(path) {
-        window.location.href = path;
-      },
-      pageChange(thisPageNo) {
-        this.page = thisPageNo;
-        this.show()
-      },
-      nextPage(thisPageNo) {
-        this.pageChange(thisPageNo);
-      },
-      prevPage(thisPageNo) {
-        this.pageChange(thisPageNo);
-      }
-    },
-    watch: {
-      tag(tag) {
-        this.show()
-      }
-    }
-  }
-</script>

@@ -22,10 +22,7 @@
         {{ data.subDescription || $description || 'Welcome to your VuePress site' }}
       </p>
 
-      <p
-        class="action"
-        v-if="data.actionText && data.actionLink"
-      >
+      <p class="action" v-if="data.actionText && data.actionLink">
         <NavLink
           class="action-button"
           :item="actionLink"
@@ -33,15 +30,10 @@
       </p>
     </div>
 
-    <div
-      class="features"
-      v-if="data.features && data.features.length"
-    >
-      <div
-        class="feature"
+    <div class="features" v-if="data.features && data.features.length">
+      <div class="feature"
         v-for="(feature, index) in data.features"
-        :key="index"
-      >
+        :key="index">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
@@ -49,10 +41,7 @@
 
     <Content custom/>
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
+    <div class="footer" v-if="data.footer">
       {{ data.footer }}
     </div>
   </div>
@@ -105,7 +94,7 @@ export default {
     .action-button
       display inline-block
       font-size 1.0rem
-      color #ffffff
+      color #fff
       background-color $accentColor
       padding 0.8rem 1.6rem
       border-radius 30px

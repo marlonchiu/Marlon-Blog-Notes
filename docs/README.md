@@ -4,7 +4,7 @@ heroImage: /img/logo.png
 tagline: 我的前端成长之路
 actionText: 我的学习笔记 →
 actionLink: /timeLine/
-subDescription: 你在努力点也行的 努力吧！
+subDescription: 你再努力点也行的 努力吧！
 features:
 - title: 风生水起
   details: 本来想着，我这辈子随随便便就算了，反正都那样。但一听到你和我说要一起加油啊，忽然觉得，无论如何，我都得出全力啦。

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <el-button v-for=" item in items " :key="item" class="tags" size="medium" round @click="showBlogs(item)"> {{
+    <el-button
+        v-for=" item in items"
+        :key="item" class="tags"
+        size="medium" round @click="showBlogs(item)"> {{
       item}}
     </el-button>
     <div v-if=" !listHide " style=" margin-top : 30px">
@@ -12,14 +15,14 @@
           type="info"
           show-icon
           center
-          :closable=" false ">
+          :closable="false">
       </el-alert>
     </div>
   </div>
 
 </template>
 
-<style scope>
+<style scoped>
   .tags {
     margin: 10px
   }

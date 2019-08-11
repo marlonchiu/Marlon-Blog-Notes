@@ -1,11 +1,9 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-
     <router-link
       :to="$localePath"
-      class="home-link"
-    >
+      class="home-link">
       <img
         class="logo"
         v-if="$site.themeConfig.logo"
@@ -47,7 +45,12 @@ import SearchBox from './SearchBox.vue'
 import NavLinks from './NavLinks.vue'
 
 export default {
-  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  components: {
+    SidebarButton,
+    NavLinks,
+    SearchBox,
+    AlgoliaSearchBox
+  },
 
   data () {
     return {

@@ -67,7 +67,12 @@ import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
+  components: { Home,
+    Page,
+    Sidebar,
+    Navbar,
+    SWUpdatePopup
+  },
 
   data () {
     return {
