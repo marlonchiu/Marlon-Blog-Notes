@@ -6,7 +6,7 @@
 
 ## 参考
 
-[参考搭建教程](https://zhuzhaohua.com/technology/vue/20190601_myblog.html)
+[参考搭建教程](https://zhuzhaohua.com/technology/vue/20190915_myblog.html)
 
 [项目仓库地址](https://github.com/zhuzhaohua/myBlog)
 
